@@ -78,6 +78,9 @@ public class GateWay {
         for(Map.Entry<String, String> entry : metaData.entrySet()) {
             metaJson.put(entry.getKey(), entry.getValue());
         }
+        JSONObject gateWayJson = new JSONObject();
+        gateWayJson.put("metadata", metaJson);
+
         // Make devicesArray JSON with all devices
         List<JSONObject> deviceList = new ArrayList<>();
         for(Device device : devices) {
@@ -86,12 +89,10 @@ public class GateWay {
         JSONArray deviseJsonArray = new JSONArray();
         deviseJsonArray.putAll(deviceList);
 
-        JSONObject root = new JSONObject();
-        root.put("metadata", metaJson);
-        root.put("devices", deviseJsonArray);
-
         JSONObject response = new JSONObject();
-        response.put("gateway", root);
+        response.put("gateway", gateWayJson);
+        response.put("devices", deviseJsonArray);
+
 
         return response;
     }

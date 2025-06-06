@@ -6,15 +6,21 @@ package models;
 * */
 public class DeviceIndex {
     final private String deviceIndexName;
+    final private String deviceIndexLoraID;
     private String deviceIndexDescription;
     private DataType dataType;
     private String dataUnitName;
 
-    public DeviceIndex(String deviceIndexName, String dataUnitName) {
+    public DeviceIndex(String deviceIndexName, String dataUnitName, String deviceIndexLoraID) {
         this.deviceIndexName = deviceIndexName;
+        this.deviceIndexLoraID = deviceIndexLoraID;
         this.dataUnitName = dataUnitName;
         this.deviceIndexDescription = "";
         this.dataType = DataType.STRING;
+    }
+
+    public String getDeviceIndexLoraID() {
+        return deviceIndexLoraID;
     }
 
     public String getDataUnitName() {
